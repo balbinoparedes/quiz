@@ -32,12 +32,21 @@ exports.create = function(req, res) {
     // La sesion se define por la existencia de: req.session.user
     req.session.user = {id: user.id, username: user.username};
 
-    res.redirect(req.session.redir.toString()); // redireccion a path anterior a login
+    // Creamos req.session.referenceTime para almacenar la hora del sistema
+    req.session.referenceTime = new Date().getTime();
+    // para disparar la alerta de desconexion al superar 2 min.
+    req.session.autoLogout= false;
+
+    res.redirect(req.session.redir.toString()); // redireccion al path anterior a login
   });
 };
 
 //DELETE /logout -- destruir sesion
 exports.destroy = function(req, res) {
   delete req.session.user;
-  res.redirect(req.session.redir.toString()); // redireccion a path anterior a logout
-}
+  if (req.session.autoLogout){  //controlamos si el valor ha cambiado a true en app.js
+      res.redirect("/login");   //redireccionamos y mostramos mensaje de fin de sesion .
+  }else{
+      res.redirect(req.session.redir.toString()); // redireccion al path anterior a logout
+       }
+};

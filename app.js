@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
   var lastTime = new Date().getTime();
   var interval = lastTime - req.session.referenceTime;
 
-  if (interval > (2 *  1000)) {
+  if (interval > (2 * 60 * 1000)) {
     delete req.session.referenceTime;
     req.session.autoLogout = true;
     res.redirect("/logout");

@@ -1,7 +1,8 @@
 var users =
   {
-    admin: {id: 1, username:"admin", password:"9999"},
-    guest: {id: 2, username:"guest", password:"free"}
+    admin: {id: 1, username:"admin", password:"1234"},
+    pepe: {id: 2, username:"pepe", password:"5678"},
+    guest: {id: 3, username:"guest", password:"free"}
   };
 
 // Comprueba si el usuario está registrado en users

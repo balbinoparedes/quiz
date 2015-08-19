@@ -31,3 +31,9 @@ nav span             { margin: 0px 10px 0px 0px;}
   opacity: 0.5;
   zoom: 1;
 }
+
+table#t01 {
+	  text-align: left;
+    width: 100%;
+    background-color: #f1f1c1;
+}
